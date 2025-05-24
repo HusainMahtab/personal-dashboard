@@ -30,7 +30,7 @@ export const profileData: ProfileData = {
     {
       company: "Enternlight",
       position: "Frontend Developer Intern",
-      duration: "August 2024 - January 2025",
+      duration: "Aguest 2024 - january 2025",
       responsibilities: [
         "Developed responsive UIs using React and Tailwind CSS",
         "Collaborated with team on product features",
@@ -69,4 +69,10 @@ export const profileData: ProfileData = {
     { name: "MongoDB", level: 75 }
   ]
 },
+  hobbies: [
+    { name: "Full-Stack Development", icon: "code" },
+    { name: "Photography", icon: "camera" },
+    { name: "Hiking", icon: "mountain" },
+    { name: "Reading tech blogs", icon: "book" }
+  ]
 };

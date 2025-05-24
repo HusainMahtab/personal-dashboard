@@ -38,4 +38,5 @@ export interface ProfileData {
   academics: AcademicItem[];
   experience: ExperienceItem[];
   skills: Skills;
+  hobbies: { name: string; icon: string }[];
 }
