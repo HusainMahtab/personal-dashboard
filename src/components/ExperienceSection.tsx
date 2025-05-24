@@ -41,13 +41,38 @@ const ExperienceSection = ({
 
           {/* Timeline items */}
           <div className="space-y-12">
-            {[...experience, ...academics]
+            {[...academics, ...experience]
               .sort((a, b) => {
-                // Get start years safely
-                const aYear = a.year ? parseInt(a.year.split(" - ")[0]) : 0;
-                const bYear = b.year ? parseInt(b.year.split(" - ")[0]) : 0;
+                // Sort within each category (academics and experience) by year
+                const getYear = (item: AcademicItem | ExperienceItem) => {
+                  if ("year" in item) {
+                    // This is an AcademicItem
+                    return parseInt(item.year.split(" - ")[0]);
+                  } else {
+                    // This is an ExperienceItem - parse from duration
+                    // Example: "Summer 2023" -> 2023
+                    const yearMatch = item.duration.match(/\d{4}/);
+                    return yearMatch ? parseInt(yearMatch[0]) : 0;
+                  }
+                };
+
+                // If one is academic and one is experience, academic comes first
+                const aIsAcademic = "year" in a;
+                const bIsAcademic = "year" in b;
+                
+                if (aIsAcademic && !bIsAcademic) {
+                  return -1; // a (academic) comes before b (experience)
+                }
+                if (!aIsAcademic && bIsAcademic) {
+                  return 1; // b (academic) comes before a (experience)
+                }
+                
+                // If both are the same type, sort by year (most recent first)
+                const aYear = getYear(a);
+                const bYear = getYear(b);
                 return bYear - aYear;
               })
+
               .map((item, index) => (
                 <motion.div
                   key={index}
@@ -89,7 +114,7 @@ const ExperienceSection = ({
                           {"position" in item ? item.position : item.degree}
                         </p>
                         <p className="text-sm text-blue-600 dark:text-blue-400">
-                          {item.year}
+                         {"year" in item ? item.year : item.duration}
                         </p>
                       </div>
                     </div>
