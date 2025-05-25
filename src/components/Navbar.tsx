@@ -118,9 +118,10 @@ const Navbar = () => {
               aria-label="Toggle dark mode"
             >
               {theme === 'dark' ? (
-                <SunIcon className="h-5 w-5 text-yellow-300" />
-              ) : (
                 <MoonIcon className="h-5 w-5 text-gray-700" />
+
+              ) : (
+                <SunIcon className="h-5 w-5 text-yellow-300" />
               )}
             </button>
             
