@@ -30,4 +30,4 @@ A modern, responsive personal dashboard showcasing my developer portfolio with d
 
 1. Clone the repository:
    ```bash
-   git clone (https://github.com/HusainMahtab/personal-dashboard)
+   git clone https://github.com/HusainMahtab/personal-dashboard
